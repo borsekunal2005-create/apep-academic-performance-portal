@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   APEP Design System - OKLCH Tokens
+   Navy Blue + Gold Academic Theme
+   ============================================ */
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque[opsz,wdth,wght].woff2") format("woff2");
+  font-display: swap;
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans[wght].woff2") format("woff2");
+  font-display: swap;
+  font-weight: 200 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/assets/fonts/Fraunces[opsz,SOFT,WONK,wght].woff2") format("woff2");
+  font-display: swap;
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Navy blue palette */
+    --background: 0.98 0.003 240;
+    --foreground: 0.18 0.04 265;
+
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.04 265;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.04 265;
+
+    /* Navy primary */
+    --primary: 0.26 0.09 265;
+    --primary-foreground: 0.98 0.003 240;
+
+    /* Light secondary */
+    --secondary: 0.94 0.01 240;
+    --secondary-foreground: 0.26 0.09 265;
+
+    /* Muted */
+    --muted: 0.94 0.01 240;
+    --muted-foreground: 0.52 0.03 240;
+
+    /* Gold accent */
+    --accent: 0.82 0.12 85;
+    --accent-foreground: 0.18 0.04 265;
+
+    /* Destructive */
+    --destructive: 0.55 0.22 27;
+    --destructive-foreground: 0.98 0 0;
+
+    /* Borders */
+    --border: 0.88 0.01 240;
+    --input: 0.88 0.01 240;
+    --ring: 0.26 0.09 265;
+
+    /* Role colors */
+    --student-color: 0.5 0.15 240;
+    --teacher-color: 0.45 0.14 155;
+    --hod-color: 0.42 0.16 295;
+    --admin-color: 0.55 0.19 45;
+
+    /* Chart colors */
+    --chart-1: 0.26 0.09 265;
+    --chart-2: 0.45 0.14 155;
+    --chart-3: 0.82 0.12 85;
+    --chart-4: 0.42 0.16 295;
+    --chart-5: 0.55 0.19 45;
+
+    /* Sidebar - dark navy */
+    --sidebar: 0.20 0.07 265;
+    --sidebar-foreground: 0.9 0.01 240;
+    --sidebar-primary: 0.82 0.12 85;
+    --sidebar-primary-foreground: 0.18 0.04 265;
+    --sidebar-accent: 0.28 0.09 265;
+    --sidebar-accent-foreground: 0.9 0.01 240;
+    --sidebar-border: 0.3 0.06 265;
+    --sidebar-ring: 0.82 0.12 85;
+
+    /* Gold color token */
+    --gold: 0.78 0.14 85;
+    --gold-light: 0.92 0.08 88;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: oklch(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(var(--border));
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(var(--muted-foreground));
+}
+
+/* Role color utilities */
+.role-student { color: oklch(var(--student-color)); }
+.role-teacher { color: oklch(var(--teacher-color)); }
+.role-hod { color: oklch(var(--hod-color)); }
+.role-admin { color: oklch(var(--admin-color)); }
+
+.bg-role-student { background-color: oklch(var(--student-color) / 0.1); }
+.bg-role-teacher { background-color: oklch(var(--teacher-color) / 0.1); }
+.bg-role-hod { background-color: oklch(var(--hod-color) / 0.1); }
+.bg-role-admin { background-color: oklch(var(--admin-color) / 0.1); }
+
+/* Gold accent utility */
+.text-gold { color: oklch(var(--gold)); }
+.bg-gold { background-color: oklch(var(--gold)); }
+.border-gold { border-color: oklch(var(--gold)); }
+
+/* Gradient backgrounds */
+.bg-hero-gradient {
+  background: linear-gradient(
+    135deg,
+    oklch(0.18 0.07 265) 0%,
+    oklch(0.26 0.09 265) 40%,
+    oklch(0.22 0.08 280) 100%
+  );
+}
+
+.bg-sidebar-gradient {
+  background: linear-gradient(
+    180deg,
+    oklch(0.20 0.08 265) 0%,
+    oklch(0.16 0.06 270) 100%
+  );
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px oklch(0.18 0.09 265 / 0.15);
+}
+
+/* Academic pattern background */
+.bg-pattern {
+  background-image: 
+    radial-gradient(circle at 20% 50%, oklch(0.82 0.12 85 / 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, oklch(0.50 0.15 240 / 0.06) 0%, transparent 40%);
+}
